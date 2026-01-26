@@ -3,51 +3,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-5">
-    <div class="row align-items-center">
-        <!-- Left Column: Text -->
-        <div class="col-lg-6">
-            <h1 class="display-4 fw-bold">
-                <span id="typed-text"></span><span class="blinking-cursor">|</span>
-            </h1>
+<section class="cover-hero">
+    <div class="container py-5">
+        <div class="cover-layout">
 
-            <p>
-                Welcome to my portfolio... a space to explore my coding journey, the FIRST Robotics Competition, and the projects I'm currently building.
-            </p>
+            <!-- Copy -->
+            <div class="cover-copy">
+                <div class="cover-kicker">Portfolio · 2026</div>
 
-            <!-- Toggle Button -->
-            <button id="darkModeToggle" class="btn btn-outline-dark mt-3">
-                <span id="toggleText">Switch to Pink Mode</span>
-            </button>
-        </div>
+                <h1 class="cover-title">
+                    <span class="cover-title-bg">PORTFOLIO</span>
+                    <span class="cover-title-front">Kwethukubonga Kunene</span>
+                </h1>
 
-        <!-- Right Column: Rectangular Image -->
-        <div class="col-lg-6 text-center mt-4 mt-lg-0">
-            <img src="~/images/kwethu.jpg" alt="Kwethu Kunene" style="max-width: 100%; border-radius: 8px;">
+                <div class="cover-typed">
+                    <span id="typed-text"></span><span class="blinking-cursor">|</span>
+                </div>
+
+                <p class="cover-sub">
+                    Computer and Information Science student specialising in Application Development, with a love for robotics and fitness.
+                </p>
+
+                <div class="cover-tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Security</span>
+                </div>
+
+                <div class="cover-cta">
+                    <a class="btn btn-dark" href="/Portfolio/Projects">View Projects</a>
+                    <a class="btn btn-outline-dark" href="/Portfolio/Contact">Contact</a>
+                </div>
+            </div>
+
+            <!--  Animated Cover -->
+            <div class="cover-stage" id="coverStage">
+                <div class="cover-frame" id="coverFrame">
+                    <img class="cover-img"
+                         src="~/images/cover/cover-scene4.png"
+                         alt="Illustrated scene of Kwethu studying and building with robotics"
+                         draggable="false" />
+
+                    <!-- scrapbook overlays -->
+                    <div class="tape tape-a"></div>
+                    <div class="tape tape-b"></div>
+
+                    <div class="doodle star s1"></div>
+                    <div class="doodle star s2"></div>
+                    <div class="doodle squiggle"></div>
+
+                    
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+</section>
 
 @section Scripts {
     <script>
-        // Typing animation
+        // ===== Typed animation  =====
         const phrases = [
-            "Hi, my name is Kwethu",
-            "I'm a Robotics Club Mentor",
-            "An aspiring Software Engineer",
-            "A God Fearing Woman",
-            "An Arsenal FC Supporter",
-            "And a Formula 1 Fan",
-            "BTW I love to gym and play paddle"
+            "Hi, I’m Kwethukubonga.",
+            "But you can call me Kwethu.",
+            "I was born and raised in Durban, Kwa-Zulu Natal.",
+            "I now study in Cape Town.",
+            "Welcome to my portfolio."
         ];
 
         let currentPhrase = 0;
         let currentChar = 0;
-        const speed = 80;
-        const delayBetweenPhrases = 1600;
+        const speed = 65;
+        const delayBetweenPhrases = 1400;
         const textElement = document.getElementById("typed-text");
 
         function typePhrase() {
+            if (!textElement) return;
             if (currentChar < phrases[currentPhrase].length) {
                 textElement.innerHTML += phrases[currentPhrase].charAt(currentChar);
                 currentChar++;
@@ -68,11 +100,48 @@
             }
         }
 
-        window.onload = typePhrase;
+        // ===== Cover reveal animation trigger =====
+        window.addEventListener("load", () => {
+            document.documentElement.classList.add("cover-play");
+            typePhrase();
+        });
 
+        // ===== Subtle parallax (mouse + touch) =====
+        const stage = document.getElementById("coverStage");
+        const frame = document.getElementById("coverFrame");
+
+        function setParallax(x, y) {
+            // small values only; 
+            const max = 10; // px
+            const dx = (x - 0.5) * max;
+            const dy = (y - 0.5) * max;
+            frame.style.setProperty("--px", `${dx.toFixed(2)}px`);
+            frame.style.setProperty("--py", `${dy.toFixed(2)}px`);
+        }
+
+        if (stage && frame) {
+            stage.addEventListener("mousemove", (e) => {
+                const rect = stage.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                setParallax(x, y);
+            });
+
+            stage.addEventListener("mouseleave", () => setParallax(0.5, 0.5));
+
+            // touch (mobile)
+            stage.addEventListener("touchmove", (e) => {
+                const t = e.touches[0];
+                const rect = stage.getBoundingClientRect();
+                const x = (t.clientX - rect.left) / rect.width;
+                const y = (t.clientY - rect.top) / rect.height;
+                setParallax(x, y);
+            }, { passive: true });
+
+            stage.addEventListener("touchend", () => setParallax(0.5, 0.5));
+        }
     </script>
 }
-
 
 
 

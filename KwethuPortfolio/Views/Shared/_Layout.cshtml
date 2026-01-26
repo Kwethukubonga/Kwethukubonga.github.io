@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/KwethuPortfolio.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 </head>
 <body class="@ViewData["BodyClass"]">
     <!-- Body Class for global styling -->
@@ -23,6 +26,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Portfolio" asp-action="Home">Home</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Portfolio" asp-action="Posts">Posts</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Portfolio" asp-action="Journey">Journey</a>
                         </li>
@@ -37,7 +44,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Portfolio" asp-action="Contact">Contact</a>
-                        </li>                       
+                        </li> 
+                        
                     </ul>
                 </div>
             </div>

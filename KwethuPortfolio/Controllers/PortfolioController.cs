@@ -32,5 +32,10 @@ namespace KwethuPortfolio.Controllers
         {
             return View();
         }
+        public IActionResult Posts()
+        {
+            return View();
+        }
+
     }
 }
