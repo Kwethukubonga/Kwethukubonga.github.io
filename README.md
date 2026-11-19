@@ -1,27 +1,25 @@
-# Kwethukubonga Kunene Portfolio
-Personal site
+# Kwethukubonga Kunene
 
-## Overview
-- Developed and deployed a personal portfolio using C#, ASP.NET Core MVC, Razor Views, and hosted on Microsoft Azure Web App.
-- Implemented a fully responsive layout using Bootstrap, HTML/CSS, and JavaScript.
-- Showcases academic journey, skills, and current projects.
+Personal portfolio. One page, no framework, no build step.
 
-## Features
-- Theme Switching between "bright" mode and a lively "pink" mode 
-- Mouse Trail Effect inspired by Brittany Chiang’s aesthetic
-- Image Carousels community service highlights
-- Fully Responsive for mobile, tablet, and desktop
+## Live site
 
-## Setup Instructions
-Download Visual Studio then download the repository as a ZIP file and extract it to a directory.
+https://kwethukubonga.github.io/personal-site/
 
-## Link to the website
-https://kwethukunene-cxdngrcncaezc9h4.southafricanorth-01.azurewebsites.net/
+## Structure
 
-## Tech Stack
-- HTML/CSS
-- JavaScript
-- C#
-- Visual Studio
-- Azure Web App
-- ASP.NET Core Web App (Model View Controller)
+- `docs/` is the site, and the only copy of it. GitHub Pages serves this folder.
+  - `index.html`, `styles.css`, `app.js`
+  - `img/` — the photographs used on the page
+  - `Kwethukubonga-Kunene-CV.pdf`
+- `KwethuPortfolio/` is a small ASP.NET Core project that serves `docs/` on localhost, so the
+  site opens with F5 in Visual Studio. It holds no page content of its own.
+
+## Editing
+
+Edit the files in `docs/` directly. Pushing to `Improvements` republishes the site at the same
+URL. `docs/index.html` also opens straight from the file system with no server running.
+
+## Built with
+
+HTML, CSS and JavaScript. C# and ASP.NET Core for the local dev server.
