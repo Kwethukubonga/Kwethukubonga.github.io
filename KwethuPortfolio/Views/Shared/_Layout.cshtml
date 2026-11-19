@@ -53,7 +53,7 @@
     </header>
 
     <!-- Only show the button on the Home page -->
-    @if (ViewData["IsHomePage"] != null && (bool)ViewData["IsHomePage"])
+    @if (ViewData["IsHomePage"] is true)
     {
         <div class="text-center mt-3">
             <button id="darkModeToggle" class="btn btn-outline-dark">

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="Kwethukubonga Kunene - application developer in Cape Town. Android and web projects, robotics and community work." />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght&#64;300..900&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/portfolio.css" />
+</head>
+<body>
+    @RenderBody()
+    <script src="/js/portfolio.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
