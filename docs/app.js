@@ -1,4 +1,6 @@
 (function(){
+  document.documentElement.className += " js";
+
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var bar = document.getElementById("topbar");
   var prog = document.getElementById("progress");
