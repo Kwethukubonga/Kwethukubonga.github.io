@@ -1,34 +1,12 @@
-namespace KwethuPortfolio
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+using Microsoft.Extensions.FileProviders;
 
-          
-            builder.Services.AddControllersWithViews();
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
 
-            var app = builder.Build();
+var site = new PhysicalFileProvider(
+    Path.GetFullPath(Path.Combine(builder.Environment.ContentRootPath, "..", "docs")));
 
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
+app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = site });
+app.UseStaticFiles(new StaticFileOptions { FileProvider = site });
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Portfolio}/{action=Home}/{id?}");
-
-            app.Run();
-        }
-    }
-}
+app.Run();
