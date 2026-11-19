@@ -4,7 +4,7 @@ Personal portfolio. One page, no framework, no build step.
 
 ## Live site
 
-https://kwethukubonga.github.io/personal-site/
+https://kwethukubonga.github.io
 
 ## Structure
 
@@ -17,8 +17,7 @@ https://kwethukubonga.github.io/personal-site/
 
 ## Editing
 
-Edit the files in `docs/` directly. Pushing to `Improvements` republishes the site at the same
-URL. `docs/index.html` also opens straight from the file system with no server running.
+Edit the files in `docs/` directly. Pushing to `Improvements` and merging into `master` republishes the site at the same URL. `docs/index.html` also opens straight from the file system with no server running.
 
 ## Built with
 
