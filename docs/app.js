@@ -52,6 +52,15 @@
       });
     }, { rootMargin: "0px 0px -12% 0px", threshold: 0.06 });
     Array.prototype.forEach.call(scenes, function(el){ io.observe(el); });
+
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        Array.prototype.forEach.call(scenes, function(el){
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("is-in");
+        });
+      });
+    });
   }
 
   var settle = function(){
